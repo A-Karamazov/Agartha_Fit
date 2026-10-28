@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang='en'>
+<head>
+    <meta charset='utf-8'>
+    <title>Login e Cadastro Agartha Fit</title>
+    <link rel='stylesheet' href='style.css'>
+</head>
+<body>
+    <img src="logo_AF.png" alt="logo_AF" class="logo_AF">
+    <h1 class="titulo">Bem Vindo à Agartha Fit</h1>
+    <!-- Formulário de login -->
+    <form class="login">
+        <input type="text" required name="username" placeholder="Usuário">
+        <input type="password" required name="password" placeholder="Senha">
+        <button>Entrar</button>
+    </form>
+
+    <!-- Formulário de cadastro -->
+    <form class="cadastro" style="display: none;">
+        <input type="text" required name="username" placeholder="Usuário">
+        <input type="password" required minlength="6" name="password" placeholder="Senha">
+        <input type="password" required minlength="6" name="passwordconfirm" placeholder="Confirmar Senha">
+        <button>Cadastrar-se</button>
+    </form>
+
+    <a class="mostrarLogin" href="#login" style="display: none;">Entrar</a>
+    <a class="mostrarCadastro" href="#cadastro">Cadastrar-se</a>
+
+    <script>
+        //Função para verificar a resposta do servidor e exibir alertas apropriados
+        async function verificarResposta(response) {
+            if (response.status == 404) return alert("Usuário não encontrado")
+
+            if (response.status == 401) return alert("Senha incorreta")
+
+            if (response.status == 409) return alert("Usuário já existe")
+
+            if (response.status == 400) return alert("Preencha usuário e senha")
+
+            if (response.ok) {
+                window.location.href = "/home"
+                return
+            }
+        }
+
+        //Login
+        const frmLogin = document.querySelector('.login')
+        frmLogin.addEventListener('submit', async (ev) => {
+            ev.preventDefault() //Evita que a página seja recarregada
+
+            //Envia os dados do formulário para o servidor
+            const response = await fetch("/login", {
+                method: "POST",
+                headers: { "Content-type": "application/json" },
+                body: JSON.stringify({
+                    "username": frmLogin.username.value,
+                    "password": frmLogin.password.value
+                })
+            })
+
+            verificarResposta(response)
+        })
+
+
+
+        //Cadastro
+        const frmSignin = document.querySelector('.cadastro')
+        frmSignin.addEventListener('submit', async (ev) => {
+            ev.preventDefault()
+            const pass1 = frmCadastro.password.value
+            const pass2 = frmCadastro.passwordconfirm.value
+
+            if (pass1 !== pass2) {
+                alert("As senhas não conferem")
+                return
+            }
+
+            const response = await fetch("/user", {
+                method: "POST",
+                headers: { "Content-type": "application/json" },
+                body: JSON.stringify({
+                    "username": frmCadastro.username.value,
+                    "password": frmCadastro.password.value,
+                    "passwordconfirm": frmCadastro.passwordconfirm.value,
+                })
+            })
+
+            if (response.ok) {
+                frmCadastro.reset()
+                return
+            }
+
+            verificarResposta(response)
+        })
+
+
+        //Ancora Login
+        const linkLogin = document.querySelector(".mostrarLogin")
+        linkLogin.addEventListener("click", () => {
+            event.preventDefault();
+            frmLogin.style.display = "block";
+            frmSignin.style.display = "none"
+            linkLogin.style.display = "none"
+            linkCadastro.style.display = "block"
+        });
+
+        //Ancora Cadstro
+        const linkCadastro = document.querySelector(".mostrarCadastro")
+        linkCadastro.addEventListener("click", () => {
+            event.preventDefault();
+            frmSignin.style.display = "block";
+            frmLogin.style.display = "none"
+            linkCadastro.style.display = "none"
+            linkLogin.style.display = "block"
+        });
+    </script>
+</body>
+</html>

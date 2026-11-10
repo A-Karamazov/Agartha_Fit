@@ -91,3 +91,175 @@ button {
 button:hover {
     background-color: #1d4ed8;
 }
+
+/* home.html */
+
+.container {
+    width: 100%;
+    max-width: 320px;
+    height: 680px;
+    margin: 20px auto;
+    background: #f7fafc;
+    position: relative;
+    overflow: hidden;
+    padding: 48px 16px 90px;
+}
+
+/* Cabeçalho */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 28px;
+}
+
+.welcome {
+    font-size: 11px;
+    color: #879caf;
+    margin-bottom: 4px;
+}
+
+header h1 {
+    font-size: 18px;
+}
+
+.profile {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Programas */
+
+.section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.section-header h2 {
+    font-size: 17px;
+}
+
+.section-header span {
+    font-size: 11px;
+    color: #4da5d8;
+    font-weight: bold;
+}
+
+.programs {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.program-card {
+    background: #fff;
+    border: 1px solid #e4ebf1;
+    border-radius: 14px;
+    padding: 14px 13px;
+    box-shadow: 0 3px 8px rgba(50, 90, 120, 0.04);
+}
+
+.card-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.card-title h3 {
+    font-size: 13px;
+}
+
+.card-title span {
+    color: #8da9c0;
+    font-size: 23px;
+}
+
+/* Dias da semana */
+
+.week {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+.week span {
+    font-size: 8px;
+    font-weight: bold;
+    color: #a1b0bd;
+}
+
+.week .active {
+    color: #4b9fd0;
+    background: #e5f2fa;
+    border-radius: 3px;
+    padding: 3px;
+    margin: -3px 0;
+}
+
+/* Exercícios */
+
+.exercises {
+    font-size: 10px;
+    font-weight: bold;
+    color: #8297aa;
+}
+
+/* Botão adicionar */
+
+.add-button {
+    position: absolute;
+    right: 16px;
+    bottom: 106px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: #50a7d8;
+    color: white;
+    font-size: 30px;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 3px 9px rgba(60, 140, 190, 0.25);
+}
+
+/* Navegação inferior */
+
+.bottom-nav {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 64px;
+    background: white;
+    border-top: 1px solid #e1eaf1;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    color: #94a8ba;
+}
+
+.nav-item span {
+    font-size: 21px;
+}
+
+.nav-item p {
+    font-size: 10px;
+}
+
+.nav-item.selected {
+    color: #4ba6dc;
+}

@@ -64,8 +64,8 @@
 
 
         //Cadastro
-        const frmSignin = document.querySelector('.cadastro')
-        frmSignin.addEventListener('submit', async (ev) => {
+        const frmCadastro = document.querySelector('.cadastro')
+        frmCadastro.addEventListener('submit', async (ev) => {
             ev.preventDefault()
             const pass1 = frmCadastro.password.value
             const pass2 = frmCadastro.passwordconfirm.value
@@ -99,7 +99,7 @@
         linkLogin.addEventListener("click", () => {
             event.preventDefault();
             frmLogin.style.display = "block";
-            frmSignin.style.display = "none"
+            frmCadastro.style.display = "none"
             linkLogin.style.display = "none"
             linkCadastro.style.display = "block"
         });
@@ -108,7 +108,7 @@
         const linkCadastro = document.querySelector(".mostrarCadastro")
         linkCadastro.addEventListener("click", () => {
             event.preventDefault();
-            frmSignin.style.display = "block";
+            frmCadastro.style.display = "block";
             frmLogin.style.display = "none"
             linkCadastro.style.display = "none"
             linkLogin.style.display = "block"

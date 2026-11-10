@@ -1,4 +1,4 @@
-import login from "./login.html"
+import login from "./index.html"
 import home from "./home.html"
 import db from "./db.ts"
 
